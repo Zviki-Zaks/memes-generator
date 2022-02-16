@@ -1,16 +1,16 @@
 'use strict'
 
-function onInit(){
+function onInit() {
     renderImags()
 }
 
-function onNavLink(ev){
+function onNavLink(ev) {
     var els = document.querySelectorAll('.main-nav-link')
     els.forEach(el => el.classList.remove('active'))
     ev.classList.toggle('active')
 }
 
-function renderImags(){
+function renderImags() {
     const imgs = getImgsToDisplay()
     var strHTML = ''
     imgs.forEach(img => {
@@ -20,7 +20,7 @@ function renderImags(){
     document.querySelector('.imgs-gallery').innerHTML = strHTML
 }
 
-function selectImg(imgId){
+function selectImg(imgId) {
     setMeme(imgId)
     document.querySelector('.gallery-container').style.display = 'none'
     document.querySelector('.editor-container').style.display = 'grid'

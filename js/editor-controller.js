@@ -9,11 +9,10 @@ function initEditor(imgId) {
     renderCanvas()
 }
 
-function renderCanvas(){
+function renderCanvas() {
     const meme = getMeme()
     drawImgFromLocal(meme)
-    // drawText(meme)
-   
+    setTimeout(() => drawText(meme), 0)
 }
 
 function drawImgFromLocal(meme) {
@@ -25,28 +24,56 @@ function drawImgFromLocal(meme) {
 }
 
 function drawText(meme) {
-    var x = 250
-    var y = 100
-    var line = meme.lines[0]
+    var line = meme.lines[meme.selectedImgId]
+    // var x = line.x
+    var x = calcX(line)
+    var y = line.y
     gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'white'
+    gCtx.strokeStyle = 'black'
     gCtx.fillStyle = line.color
-    gCtx.font = `${line.size}px Arial`
+    gCtx.font = `${line.size}px "Impact`
     gCtx.fillText(line.txt, x, y)
     gCtx.strokeText(line.txt, x, y)
-    console.log(line.txt);
+    if (x < 10) alert('The text is too long...')
 }
 
-function onTxt(ev) {
+function onTxt() {
     var el = document.querySelector('[name=txt-line]')
     var strTxt = el.value
     setTxt(strTxt)
-    const meme = getMeme()
-    console.log(ev);
-    // renderCanvas()
-    if (ev.key==='Backspace'){
-        renderCanvas()     
-    }
-    drawText(meme)
+    renderCanvas()
 }
 
+function onColorChoice() {
+    var el = document.querySelector('[name=color]')
+    var color = el.value
+    setClr(color)
+    renderCanvas()
+}
+
+function onFontSize(strOperator) {
+    setFontSize(strOperator)
+    renderCanvas()
+}
+
+function onMoveLine(strOperator) {
+    console.log(strOperator);
+    setLinePos(strOperator)
+    renderCanvas()
+}
+
+function calcX(lineObj) {
+    if (lineObj.align === 'C') {
+        var x = lineObj.x - lineObj.txt.length / 2 * lineObj.size / 2
+    } else if (lineObj.align === 'L') {
+        x = 10
+    } else {
+        x = gCanvas.width - lineObj.txt.length * lineObj.size / 2
+    }
+    return x
+}
+
+function addLine(){
+    creatLine()
+    renderCanvas()
+}
