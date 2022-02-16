@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memes generator - Zviki</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <header class="main-header page-layout">
+        <div class="header-container header-layout">
+            <!-- <div class="logo">Logo</div> -->
+            <div class="logo"><img class="logo-img" src="images/LOGO.png"></div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a class="active" href="#" >Gallery</a></li>
+                    <li><a href="#" >About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content main-layout page-layout">
+        <section class="gallery-controller">
+            <input type="search" name="filter-imgs" id="filter-imgs" placeholder="Enter search keyword">
+            <label for="filter-imgs" onclick="onSearch()">Search</label>
+            <section class="search-keyword">
+                    <div class="keyword1" onclick="onKeyword()">funny</div>
+                    <div class="keyword2" onclick="onKeyword()">comics</div>
+                    <div class="keyword3" onclick="onKeyword()">dogs</div>
+                    <div class="keyword4" onclick="onKeyword()">drinks</div>
+                    <div class="keyword5" onclick="onKeyword()">books</div>
+                    <button class="btn more-keywords-btn">more...</button>
+            </section>
+        </section>
+
+        <section class="imgs-gallery">
+            <div class="img-card"><img src="images/meme-imgs (square)/1.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/2.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/3.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/4.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/5.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/6.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/7.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/8.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/9.jpg"></div>
+            <div class="img-card"><img src="images/meme-imgs (square)/10.jpg"></div>
+        </section>
+
+        <section class="about-container">
+            <div class="about-img"><img src="images/meme-imgs (square)/9.jpg"></div>
+                <h3 class="about-title">Zviki Zaks</h3>
+                <p class="about-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic possimus alias eos, magni
+                    vel nulla nihil ipsam delectus laborum porro inventore corporis, id molestias facilis? Quos sequi
+                    perspiciatis amet quasi.
+                </p>
+                <nav class="social-nav">
+                    <a class="git-hub" href="#">git-hub</a>
+                </nav>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="logo"><img class="logo-img" src="images/LOGO.png"></div>
+        <p class="p-footer">Feb' 2022</p>
+    </footer>
+
+</body>
+
+</html>

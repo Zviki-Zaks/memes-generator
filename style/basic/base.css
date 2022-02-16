@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color: var(--clr1-black);
+    background-color: var(--clr2-whiteClr);
+    font-family: main-font, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    object-fit: contain;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 1em;
+    line-height: 1.07142;
+}
+
+p {
+    margin: 0;
+}
+
+button, .btn {
+    cursor: pointer;
+}

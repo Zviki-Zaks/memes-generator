@@ -1,0 +1,15 @@
+
+.main-nav a {
+    color: var(--clr2-whiteClr);
+    padding: 2.25em 1em;
+}
+
+
+.main-nav a:hover {
+    color: var(--clr1-black);
+    box-shadow: inset 0px -6px 0px var(--clr1-black);
+}
+.main-nav a.active {
+    color: var(--clr1-black);
+    box-shadow: inset 0px -6px 0px var(--clr1-black);
+}
