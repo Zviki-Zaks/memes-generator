@@ -9,58 +9,62 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 
-<body>
+<body onload="onInit()">
     <header class="main-header page-layout">
         <div class="header-container header-layout">
-            <!-- <div class="logo">Logo</div> -->
             <div class="logo"><img class="logo-img" src="images/LOGO.png"></div>
             <nav class="main-nav">
                 <ul>
-                    <li><a class="active" href="#" >Gallery</a></li>
-                    <li><a href="#" >About</a></li>
+                    <li><a class="main-nav-link" href="#gallery" onclick="onNavLink(this)">Gallery</a></li>
+                    <li><a class="main-nav-link" href="#about" onclick="onNavLink(this)">About</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="main-content main-layout page-layout">
+    <main class="main-content page-layout">
+        <div class="gallery-container main-layout" id="gallery">
         <section class="gallery-controller">
             <input type="search" name="filter-imgs" id="filter-imgs" placeholder="Enter search keyword">
             <label for="filter-imgs" onclick="onSearch()">Search</label>
             <section class="search-keyword">
-                    <div class="keyword1" onclick="onKeyword()">funny</div>
-                    <div class="keyword2" onclick="onKeyword()">comics</div>
-                    <div class="keyword3" onclick="onKeyword()">dogs</div>
-                    <div class="keyword4" onclick="onKeyword()">drinks</div>
-                    <div class="keyword5" onclick="onKeyword()">books</div>
-                    <button class="btn more-keywords-btn">more...</button>
+                <div class="keyword1" onclick="onKeyword()">funny</div>
+                <div class="keyword2" onclick="onKeyword()">comics</div>
+                <div class="keyword3" onclick="onKeyword()">dogs</div>
+                <div class="keyword4" onclick="onKeyword()">drinks</div>
+                <div class="keyword5" onclick="onKeyword()">books</div>
+                <button class="btn more-keywords-btn">more...</button>
             </section>
         </section>
 
         <section class="imgs-gallery">
-            <div class="img-card"><img src="images/meme-imgs (square)/1.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/2.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/3.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/4.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/5.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/6.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/7.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/8.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/9.jpg"></div>
-            <div class="img-card"><img src="images/meme-imgs (square)/10.jpg"></div>
+            <!-- <div class="img-card" onclick="selectImg()"><img src="images/meme-imgs (square)/1.jpg"></div> -->
         </section>
 
-        <section class="about-container">
+        <section class="about-container" id="about">
             <div class="about-img"><img src="images/meme-imgs (square)/9.jpg"></div>
-                <h3 class="about-title">Zviki Zaks</h3>
-                <p class="about-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic possimus alias eos, magni
-                    vel nulla nihil ipsam delectus laborum porro inventore corporis, id molestias facilis? Quos sequi
-                    perspiciatis amet quasi.
-                </p>
-                <nav class="social-nav">
-                    <a class="git-hub" href="#">git-hub</a>
-                </nav>
+            <h3 class="about-title">Zviki Zaks</h3>
+            <p class="about-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic possimus alias eos, magni
+                vel nulla nihil ipsam delectus laborum porro inventore corporis, id molestias facilis? Quos sequi
+                perspiciatis amet quasi.
+            </p>
+            <nav class="social-nav">
+                <a class="git-hub" href="#">git-hub</a>
+            </nav>
         </section>
+        </div>
+        <div class="editor-container">
+            <div class="canvas-container">
+                <canvas class="editor-canvas" width="500" height="500"></canvas>
+            </div>
+            <section class="editor-control" >
+                <input type="text" name="txt-line" placeholder="Enter text" onkeyup="onTxt(event)">
+                <button class="move-up-btn">⬆️</button>
+                <button class="move-down-btn">⬇️</button>
+                <button class="add-txt-line-btn">➕</button>
+                <button class="delete-line-btn">❌</button>
+            </section>
+        </div>
     </main>
 
     <footer class="main-footer">
@@ -68,6 +72,9 @@
         <p class="p-footer">Feb' 2022</p>
     </footer>
 
+    <script src="js/memes-service.js"></script>
+    <script src="js/main-controller.js"></script>
+    <script src="js/editor-controller.js"></script>
 </body>
 
 </html>

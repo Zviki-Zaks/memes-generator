@@ -10,10 +10,13 @@
 @import 'basic/helpers.css';
 @import 'basic/mq.css';
 
-/* COMPONENTS */
+/* main-COMPONENTS */
 
 @import 'components/main-header.css';
 @import 'components/main-nav.css';
 @import 'components/imgs-gallery.css';
 @import 'components/about.css';
 @import 'components/footer.css';
+
+/* EDITOR-COMPONENTS */
+@import 'components/editor-container.css';

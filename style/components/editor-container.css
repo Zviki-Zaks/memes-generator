@@ -1,0 +1,30 @@
+
+.editor-container {
+    display: none;
+    background-color: var(--clr4-bgClr);
+}
+
+.editor-container .editor-canvas {
+    background-color: var(--clr2-whiteClr);
+}
+
+.editor-container .editor-control {
+
+}
+
+/* LAYOUT */
+
+.editor-container {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.editor-container .canvas-container {
+    grid-column: 1;
+}
+.editor-container .editor-control {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    grid-auto-rows: 100px;
+}
