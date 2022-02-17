@@ -1,34 +1,44 @@
 'use strict'
 
 var gImgs = [
-    { id: 1, keywords: ['polity', 'angry', 'trump'] },
-    { id: 2, keywords: ['dogs', 'love', 'secret', 'Animals'] },
-    { id: 3, keywords: ['dogs', 'baby'] },
-    { id: 4, keywords: ['Animals', 'cat'] },
-    { id: 5, keywords: ['funny',] },
-    { id: 6, keywords: ['funny',] },
-    { id: 7, keywords: ['funny',] },
-    { id: 8, keywords: ['funny',] },
-    { id: 9, keywords: ['funny',] },
-    { id: 10, keywords: ['funny',] },
-    { id: 11, keywords: ['funny',] },
-    { id: 12, keywords: ['funny',] },
-    { id: 13, keywords: ['funny',] },
-    { id: 14, keywords: ['funny',] },
-    { id: 15, keywords: ['funny',] },
-    { id: 16, keywords: ['funny',] },
-    { id: 17, keywords: ['funny',] },
-    { id: 18, keywords: ['funny',] },
+    { id: 1, keywords: ['all','polity', 'angry', 'trump'] },
+    { id: 2, keywords: ['all','dogs', 'love', 'secret', 'animal'] },
+    { id: 3, keywords: ['all','dogs', 'baby'] },
+    { id: 4, keywords: ['all','animal', 'cat'] },
+    { id: 5, keywords: ['all','funny',] },
+    { id: 6, keywords: ['all','funny',] },
+    { id: 7, keywords: ['all','funny',] },
+    { id: 8, keywords: ['all','funny',] },
+    { id: 9, keywords: ['all','funny',] },
+    { id: 10, keywords: ['all','funny',] },
+    { id: 11, keywords: ['all','funny',] },
+    { id: 12, keywords: ['all','funny',] },
+    { id: 13, keywords: ['all','funny',] },
+    { id: 14, keywords: ['all','funny',] },
+    { id: 15, keywords: ['all','funny',] },
+    { id: 16, keywords: ['all','funny',] },
+    { id: 17, keywords: ['all','funny',] },
+    { id: 18, keywords: ['all','funny',] },
 ]
-
+var gFilterBy = 'all'
 var gMeme = {
     selectedImgId: null,
     selectedLineIdx: 0,
     lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', x: 250, y: 100 }]
     // lines: []
 }
+
+function getKeywordsList (){
+    var keywords = ''
+    gImgs.forEach(img => {
+        img.keywords.map(word => { if (!keywords.includes(word)) keywords += word + ' '})
+    })
+   return keywords.trim().split(' ')
+}
+
 function getImgsToDisplay() {
-    return gImgs
+    const imgs = gImgs.filter(img=> img.keywords.includes(gFilterBy))
+    return imgs
 }
 
 function setMeme(imgId) {
@@ -77,5 +87,14 @@ function deleteLine(){
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     if (!gMeme.lines.length) creatLine()
     else gMeme.selectedLineIdx = gMeme.lines.length-1
+}
 
+function replaceLine() {
+    if (gMeme.selectedLineIdx<gMeme.lines.length-1){
+        gMeme.selectedLineIdx += 1
+    } else gMeme.selectedLineIdx = 0
+}
+
+function setFilterImgs(keyword){
+    gFilterBy = keyword
 }

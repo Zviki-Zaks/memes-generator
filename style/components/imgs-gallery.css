@@ -1,9 +1,1 @@
 
-.imgs-gallery {
-    background-color: var(--clr4-bgClr);
-    padding: 1rem;
-}
-
-.imgs-gallery .img-card {
-    cursor: pointer;
-}

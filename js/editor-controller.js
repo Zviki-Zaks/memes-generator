@@ -6,8 +6,19 @@ var gCtx
 function initEditor(imgId) {
     gCanvas = document.querySelector('.editor-canvas')
     gCtx = gCanvas.getContext('2d')
+    resizeCanvas()
     renderMeme()
+    // window.addEventListener('resize', () => {
+    //     console.log('resized')
+    //     resizeCanvas()
+    //     renderMeme()
+    //   })
 }
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container')
+    gCanvas.width = elContainer.offsetWidth - 20
+ }
 
 function renderMeme() {
     const meme = getMeme()
@@ -25,7 +36,6 @@ function drawImgFromLocal(meme) {
 
 function drawText(meme) {
     meme.lines.forEach(line => {
-        // var x = line.x
         var x = calcX(line)
         var y = line.y
         gCtx.lineWidth = 1
@@ -85,6 +95,15 @@ function addLine(){
 
 function onDeleteLine(){
     deleteLine()
+    renderMeme()
+    var elTxt = document.querySelector('[name=txt-line]')
+    var elClr = document.querySelector('[name=color]')
+    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
+}
+
+function onReplaceLine() {
+    replaceLine()
     renderMeme()
     var elTxt = document.querySelector('[name=txt-line]')
     var elClr = document.querySelector('[name=color]')
