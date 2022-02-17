@@ -12,6 +12,7 @@ function onNavLink(ev) {
     ev.classList.toggle('active')
     document.querySelector('.editor-container').style.display = 'none'
     document.querySelector('.gallery-container').style.display = 'grid'
+    document.body.classList.remove('nav-open')
     onInit()
 }
 
