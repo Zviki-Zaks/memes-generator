@@ -23,8 +23,8 @@ var gImgs = [
 
 var gMeme = {
     selectedImgId: null,
-    selectedLineIdx: null,
-    lines: [{ txt: '', size: 50, align: 'C', color: 'white', x: 250, y: 100 }]
+    selectedLineIdx: 0,
+    lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', x: 250, y: 100 }]
     // lines: []
 }
 function getImgsToDisplay() {
@@ -45,25 +45,25 @@ function getImgsById(imgId) {
 }
 
 function setTxt(strTxt) {
-    gMeme.lines[0].txt = strTxt
+    gMeme.lines[gMeme.selectedLineIdx].txt = strTxt
 }
 
 function setClr(color) {
-    gMeme.lines[0].color = color
+    gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
 function setFontSize(strOperator) {
-    gMeme.lines[0].size += (strOperator === '+') ? (+10) : (-10)
+    gMeme.lines[gMeme.selectedLineIdx].size += (strOperator === '+') ? (+10) : (-10)
 }
 
 function setLinePos(strOperator) {
-    if (strOperator==='+') gMeme.lines[0].y -= 1
-    else if (strOperator==='-')  gMeme.lines[0].y += 1
-    else  gMeme.lines[0].align = strOperator
+    if (strOperator==='+') gMeme.lines[gMeme.selectedLineIdx].y -= 1
+    else if (strOperator==='-')  gMeme.lines[gMeme.selectedLineIdx].y += 1
+    else  gMeme.lines[gMeme.selectedLineIdx].align = strOperator
 }
 
 function creatLine(){
-    var line = { txt: '', size: 50, align: 'c', color: 'white', x: gCanvas.width/2, y: 100 }
+    var line = { txt: '', size: 50, align: 'C', color: '#ffffff', x: gCanvas.width/2, y: 100 }
     if (gMeme.lines.length===1){
         line.y = gCanvas.height-100
     } else if (gMeme.lines.length>1){
@@ -71,4 +71,11 @@ function creatLine(){
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.lines.length-1
+}
+
+function deleteLine(){
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    if (!gMeme.lines.length) creatLine()
+    else gMeme.selectedLineIdx = gMeme.lines.length-1
+
 }

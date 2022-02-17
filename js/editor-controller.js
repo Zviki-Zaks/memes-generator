@@ -6,10 +6,10 @@ var gCtx
 function initEditor(imgId) {
     gCanvas = document.querySelector('.editor-canvas')
     gCtx = gCanvas.getContext('2d')
-    renderCanvas()
+    renderMeme()
 }
 
-function renderCanvas() {
+function renderMeme() {
     const meme = getMeme()
     drawImgFromLocal(meme)
     setTimeout(() => drawText(meme), 0)
@@ -24,56 +24,70 @@ function drawImgFromLocal(meme) {
 }
 
 function drawText(meme) {
-    var line = meme.lines[meme.selectedImgId]
-    // var x = line.x
-    var x = calcX(line)
-    var y = line.y
-    gCtx.lineWidth = 1
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = line.color
-    gCtx.font = `${line.size}px "Impact`
-    gCtx.fillText(line.txt, x, y)
-    gCtx.strokeText(line.txt, x, y)
-    if (x < 10) alert('The text is too long...')
+    meme.lines.forEach(line => {
+        // var x = line.x
+        var x = calcX(line)
+        var y = line.y
+        gCtx.lineWidth = 1
+        gCtx.strokeStyle = 'black'
+        gCtx.fillStyle = line.color
+        gCtx.font = `${line.size}px "Impact`
+        gCtx.fillText(line.txt, x, y)
+        gCtx.strokeText(line.txt, x, y)
+    });
 }
 
 function onTxt() {
     var el = document.querySelector('[name=txt-line]')
     var strTxt = el.value
     setTxt(strTxt)
-    renderCanvas()
+    renderMeme()
 }
 
 function onColorChoice() {
     var el = document.querySelector('[name=color]')
     var color = el.value
     setClr(color)
-    renderCanvas()
+    renderMeme()
 }
 
 function onFontSize(strOperator) {
     setFontSize(strOperator)
-    renderCanvas()
+    renderMeme()
 }
 
 function onMoveLine(strOperator) {
-    console.log(strOperator);
     setLinePos(strOperator)
-    renderCanvas()
+    renderMeme()
 }
 
 function calcX(lineObj) {
+    const width = gCtx.measureText(lineObj.txt).width
     if (lineObj.align === 'C') {
-        var x = lineObj.x - lineObj.txt.length / 2 * lineObj.size / 2
+        var x = lineObj.x - width / 2
     } else if (lineObj.align === 'L') {
         x = 10
     } else {
-        x = gCanvas.width - lineObj.txt.length * lineObj.size / 2
+        x = gCanvas.width - (width+10)
     }
+    if (x < 10 || (width+20)>=gCanvas.width) alert('The text is too long...')
     return x
 }
 
 function addLine(){
     creatLine()
-    renderCanvas()
+    renderMeme()
+    var elTxt = document.querySelector('[name=txt-line]')
+    var elClr = document.querySelector('[name=color]')
+    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
+}
+
+function onDeleteLine(){
+    deleteLine()
+    renderMeme()
+    var elTxt = document.querySelector('[name=txt-line]')
+    var elClr = document.querySelector('[name=color]')
+    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
