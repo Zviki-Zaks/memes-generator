@@ -10,10 +10,10 @@ function onNavLink(ev) {
     var els = document.querySelectorAll('.main-nav-link')
     els.forEach(el => el.classList.remove('active'))
     ev.classList.toggle('active')
-    document.querySelector('.editor-container').style.display = 'none'
-    document.querySelector('.gallery-container').style.display = 'grid'
+    document.body.classList.remove('editor-open')
+    // document.querySelector('.editor-container').style.display = 'none'
+    // document.querySelector('.gallery-container').style.display = 'grid'
     document.body.classList.remove('nav-open')
-    onInit()
 }
 
 function renderImags() {
@@ -28,10 +28,12 @@ function renderImags() {
 
 function selectImg(imgId) {
     setMeme(imgId)
-    document.querySelector('.gallery-container').style.display = 'none'
-    document.querySelector('.editor-container').style.display = 'flex'
-    // document.querySelector('.active').classList.remove('active')
-    initEditor(imgId)
+    document.body.classList.toggle('editor-open')
+    // document.querySelector('.gallery-container').style.display = 'none'
+    // document.querySelector('.editor-container').style.display = 'grid'
+    var els = document.querySelectorAll('.main-nav-link')
+    els.forEach(el => el.classList.remove('active'))
+    initEditor()
 }
 
 function renderOptions() {

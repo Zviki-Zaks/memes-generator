@@ -1,6 +1,7 @@
 
 .page-layout {
-    max-width: 100vw;
+    /* display: grid;
+    grid-template-rows: 10% 1fr 15%; */
 }
 
 /* HEADER */
@@ -102,5 +103,4 @@
     margin-bottom: 2em;
 }
 
-/* EDITOR */
 

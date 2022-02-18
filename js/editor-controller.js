@@ -3,21 +3,22 @@
 var gCanvas
 var gCtx
 
-function initEditor(imgId) {
-    gCanvas = document.querySelector('.editor-canvas')
+function initEditor() {
+    gCanvas = document.getElementById('editor-canvas')
     gCtx = gCanvas.getContext('2d')
     resizeCanvas()
     renderMeme()
-    // window.addEventListener('resize', () => {
-    //     console.log('resized')
-    //     resizeCanvas()
-    //     renderMeme()
-    //   })
+    window.addEventListener('resize', resizeCanvas)
 }
 
 function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container')
+    console.log(elContainer);
+    console.dir(elContainer);
     gCanvas.width = elContainer.offsetWidth - 20
+    gCanvas.height = gCanvas.width
+
+    renderMeme()
  }
 
 function renderMeme() {
