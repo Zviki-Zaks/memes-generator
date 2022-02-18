@@ -41,12 +41,13 @@ body.editor-open .main-content {
 .editor-container .canvas-container {
     width: 40%;
     height: 90%;
-    /* margin: auto; */
+    /* margin: 1rem; */
 }
 
 .editor-container #editor-canvas {
     background-color: var(--clr2-whiteClr);
     margin: 0 auto;
+    /* padding: 1rem; */
 }
 
 .editor-container .editor-control .btn{

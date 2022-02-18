@@ -24,6 +24,7 @@ var gFilterBy = 'all'
 var gMeme = {
     selectedImgId: null,
     selectedLineIdx: 0,
+    // lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', y: 100 }]
     lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', x: 250, y: 100 }]
     // lines: []
 }
@@ -73,6 +74,7 @@ function setLinePos(strOperator) {
 }
 
 function creatLine(){
+    // var line = { txt: '', size: 50, align: 'C', color: '#ffffff', y: 100 }
     var line = { txt: '', size: 50, align: 'C', color: '#ffffff', x: gCanvas.width/2, y: 100 }
     if (gMeme.lines.length===1){
         line.y = gCanvas.height-100

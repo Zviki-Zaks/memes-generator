@@ -13,12 +13,10 @@ function initEditor() {
 
 function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container')
-    console.log(elContainer);
-    console.dir(elContainer);
-    gCanvas.width = elContainer.offsetWidth - 20
+    gCanvas.width = elContainer.offsetWidth - 36
     gCanvas.height = gCanvas.width
-
-    renderMeme()
+    // renderMeme()
+    setTimeout(() => renderMeme(),100)
  }
 
 function renderMeme() {
@@ -73,15 +71,18 @@ function onMoveLine(strOperator) {
 }
 
 function calcX(lineObj) {
-    const width = gCtx.measureText(lineObj.txt).width
+    var txtWidth = gCtx.measureText(lineObj.txt).width
+    lineObj.x = gCanvas.width/2
     if (lineObj.align === 'C') {
-        var x = lineObj.x - width / 2
+        var x = lineObj.x - txtWidth / 2
+        // var x = gCanvas.width/2 - txtWidth / 2
     } else if (lineObj.align === 'L') {
         x = 10
     } else {
-        x = gCanvas.width - (width+10)
+        x = gCanvas.width - (txtWidth+10)
     }
-    if (x < 10 || (width+20)>=gCanvas.width) alert('The text is too long...')
+    if (x < 10 || (txtWidth+20)>=gCanvas.width) alert('The text is too long...')
+    console.log(x);
     return x
 }
 
