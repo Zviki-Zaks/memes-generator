@@ -18,7 +18,7 @@
         "replace . add-txt . delete"
         "up down move-left move-center move-right"
         "increase increase decrease decrease color-btn"
-        ". . . . . ";
+        ". . save download download ";
         grid-auto-columns: auto;
         gap: 5px;
         padding: 1rem;

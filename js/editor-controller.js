@@ -15,7 +15,6 @@ function resizeCanvas() {
     var elContainer = document.querySelector('.canvas-container')
     gCanvas.width = elContainer.offsetWidth - 36
     gCanvas.height = gCanvas.width
-    // renderMeme()
     setTimeout(() => renderMeme(),100)
  }
 
@@ -23,6 +22,10 @@ function renderMeme() {
     const meme = getMeme()
     drawImgFromLocal(meme)
     setTimeout(() => drawText(meme), 0)
+    var elTxt = document.querySelector('[name=txt-line]')
+    var elClr = document.querySelector('[name=color]')
+    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
+    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
 
 function drawImgFromLocal(meme) {
@@ -75,40 +78,39 @@ function calcX(lineObj) {
     lineObj.x = gCanvas.width/2
     if (lineObj.align === 'C') {
         var x = lineObj.x - txtWidth / 2
-        // var x = gCanvas.width/2 - txtWidth / 2
     } else if (lineObj.align === 'L') {
         x = 10
     } else {
         x = gCanvas.width - (txtWidth+10)
     }
     if (x < 10 || (txtWidth+20)>=gCanvas.width) alert('The text is too long...')
-    console.log(x);
     return x
 }
 
 function addLine(){
     creatLine()
     renderMeme()
-    var elTxt = document.querySelector('[name=txt-line]')
-    var elClr = document.querySelector('[name=color]')
-    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
-    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
 
 function onDeleteLine(){
     deleteLine()
     renderMeme()
-    var elTxt = document.querySelector('[name=txt-line]')
-    var elClr = document.querySelector('[name=color]')
-    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
-    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
 
 function onReplaceLine() {
     replaceLine()
     renderMeme()
-    var elTxt = document.querySelector('[name=txt-line]')
-    var elClr = document.querySelector('[name=color]')
-    elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
-    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
+
+function onSaveMeme() {
+    saveMeme()
+    document.body.classList.add('memes-open')
+    initMemes()
+}
+
+function downloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-meme.jpg'
+}
+

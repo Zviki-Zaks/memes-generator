@@ -21,5 +21,8 @@
 /* EDITOR-COMPONENTS */
 @import 'components/editor-container.css';
 
+/* SAVE-MEMES-COMPONENTS */
+@import 'components/memes-container.css';
+
 /* MEDIA-QUERY */
 @import 'basic/mq.css';

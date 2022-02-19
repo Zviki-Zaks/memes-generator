@@ -1,0 +1,47 @@
+
+.memes-container {
+    display: none;
+}
+
+body.memes-open {
+    display: grid;
+    grid-template-rows: 92.23px 1fr 143.43;
+    
+}
+body.memes-open .gallery-container {
+    display: none;
+}
+body.memes-open .editor-container {
+    display: none;
+}
+body.memes-open .memes-container {
+    background-color: var(--clr4-bgClr);
+    display: grid;
+}
+header {
+    grid-row: 1;
+}
+main {
+    grid-row: 2;
+}
+footer {
+    grid-row: 3;
+}
+body.memes-open .header-layout {
+    margin-bottom: 0;
+}
+
+body.memes-open .main-content {
+    padding: 0;
+}
+.memes-container {
+    height: calc(100vh - 235.66px);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: max-content;
+    gap: 10px;
+}
+
+.memes-container h1 {
+    grid-column: 3 ;
+    text-align: center;
+}

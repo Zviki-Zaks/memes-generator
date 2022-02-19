@@ -16,6 +16,7 @@
             <button class="nav-btn" onclick="onNavToggle()">&#9776</button>
             <nav class="main-nav">
                 <ul>
+                    <li><a class="main-nav-link link3" href="#memes" onclick="onNavLink(this)">Memes</a></li>
                     <li><a class="main-nav-link link1" href="#gallery" onclick="onNavLink(this)">Gallery</a></li>
                     <li><a class="main-nav-link link2" href="#about" onclick="onNavLink(this)">About</a></li>
                 </ul>
@@ -42,7 +43,7 @@
             </section>
 
             <section class="about-container" id="about">
-                <div class="about-img"><img src="images/meme-imgs (square)/9.jpg"></div>
+                <div class="about-img"><img src="images/my-img/me1.jpg"></div>
                 <h3 class="about-title">Zviki Zaks</h3>
                 <p class="about-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic possimus alias eos,
                     magni
@@ -60,18 +61,26 @@
             </div>
             <section class="editor-control">
                 <input type="text" name="txt-line" placeholder="Enter text" onkeyup="onTxt()">
-                <button class="replace-btn btn" onclick="onReplaceLine()">&#8645</button>
-                <button class="move-up-btn btn" onclick="onMoveLine('+')">⬆️</button>
-                <button class="move-down-btn btn" onclick="onMoveLine('-')">⬇️</button>
-                <button class="move-left-btn btn" onclick="onMoveLine('L')">Left</button>
-                <button class="move-center-btn btn" onclick="onMoveLine('C')">Center</button>
-                <button class="move-right-btn btn" onclick="onMoveLine('R')">Right</button>
-                <button class="add-txt-line-btn btn" onclick="addLine()">➕</button>
-                <button class="delete-line-btn btn" onclick="onDeleteLine()">❌</button>
-                <button class="increase-font-btn btn" onclick="onFontSize('+')">Increase</button>
-                <button class="decrease-font-btn btn" onclick="onFontSize('-')">Decrease</button>
+                <button class="replace-btn btn" onclick="onReplaceLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="move-up-btn btn" onclick="onMoveLine('+')">⬆</button>
+                <button class="move-down-btn btn" onclick="onMoveLine('-')">⬇</button>
+                <button class="move-left-btn btn" onclick="onMoveLine('L')"><img src="ICONS/align-to-left.png"></button>
+                <button class="move-center-btn btn" onclick="onMoveLine('C')"><img src="ICONS/center-text-alignment.png"></button>
+                <button class="move-right-btn btn" onclick="onMoveLine('R')"><img src="ICONS/align-to-right.png"></button>
+                <button class="add-txt-line-btn btn" onclick="addLine()"><img src="ICONS/add.png"></button>
+                <button class="delete-line-btn btn" onclick="onDeleteLine()"><img src="ICONS/trash.png"></button>
+                <button class="increase-font-btn btn" onclick="onFontSize('+')"><img src="ICONS/increase font - icon.png"></button>
+                <button class="decrease-font-btn btn" onclick="onFontSize('-')"><img src="ICONS/decrease font - icon.png"></button>
                 <input type="color" class="color-btn btn" name="color" onchange="onColorChoice()">
+                <button class="save-btn btn" onclick="onSaveMeme()">Save</button>
+                <a class="download-btn btn" href="#" onclick="downloadCanvas(this)">Download</a>
             </section>
+        </div>
+        <div class="memes-container" id="memes">
+            <!-- <h1 class="no-memes">Create Your Memes</h1> -->
+            <!-- <div class="memes-canvas-container">
+                <canvas id="memes-canvas" width="200" height="200"></canvas>
+            </div> -->
         </div>
     </main>
 
@@ -80,9 +89,11 @@
         <p class="p-footer">Feb' 2022</p>
     </footer>
 
+    <script src="js/storage-service.js"></script>
     <script src="js/memes-service.js"></script>
     <script src="js/main-controller.js"></script>
     <script src="js/editor-controller.js"></script>
+    <script src="js/memes-controller.js"></script>
 </body>
 
 </html>

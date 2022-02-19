@@ -21,11 +21,13 @@ footer {
 body.editor-open .gallery-container {
     display: none;
 }
+body.editor-open .memes-container {
+    display: none;
+}
 body.editor-open .editor-container {
     background-color: var(--clr4-bgClr);
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
+    /* height: calc(100vh - 235.66px); */
 }
 
 body.editor-open .header-layout {
@@ -51,7 +53,28 @@ body.editor-open .main-content {
 }
 
 .editor-container .editor-control .btn{
+    width: 40px;
     height: 40px;
+}
+.editor-container .editor-control .move-up-btn,.move-down-btn{
+    font-size: xx-large;
+    line-height: 0;
+}
+.editor-container .editor-control .save-btn{
+    width: auto;
+    background-color: var(--clr3-primaryClr);
+}
+.editor-container .editor-control .download-btn{
+    width: auto;
+    background-color: var(--clr3-primaryClr);
+    text-decoration: none;
+    color: var(--clr1-black);
+    padding: 10px;
+    text-align: center;
+    border-width: 2px;
+    border-style: outset;
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
 }
 
 /* LAYOUT */
@@ -77,8 +100,8 @@ body.editor-open .main-content {
     ". . . . . "
     "up down move-left move-center move-right"
     ". . . . . "
-    "increase increase decrease decrease color-btn"
-    ". . . . . ";
+    "increase decrease . . color-btn"
+    ". . save download download ";
     grid-auto-columns: auto;
     gap: 15px;
     padding: 1rem;
@@ -128,5 +151,13 @@ body.editor-open .main-content {
 }
 .editor-container .editor-control .color-btn{
     grid-area: color-btn;
+
+}
+.editor-container .editor-control .save-btn{
+    grid-area: save;
+
+}
+.editor-container .editor-control .download-btn{
+    grid-area: download;
 
 }

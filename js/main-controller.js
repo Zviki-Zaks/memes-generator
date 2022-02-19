@@ -6,14 +6,17 @@ function onInit() {
     renderOptions()
 }
 
-function onNavLink(ev) {
+function onNavLink(elThis) {
     var els = document.querySelectorAll('.main-nav-link')
     els.forEach(el => el.classList.remove('active'))
-    ev.classList.toggle('active')
+    elThis.classList.toggle('active')
     document.body.classList.remove('editor-open')
-    // document.querySelector('.editor-container').style.display = 'none'
-    // document.querySelector('.gallery-container').style.display = 'grid'
+    document.body.classList.remove('memes-open')
     document.body.classList.remove('nav-open')
+    if (elThis.innerText==='Memes'){
+    document.body.classList.add('memes-open')
+    initMemes()
+    }
 }
 
 function renderImags() {
@@ -27,6 +30,7 @@ function renderImags() {
 }
 
 function selectImg(imgId) {
+    creatMeme()
     setMeme(imgId)
     document.body.classList.toggle('editor-open')
     // document.querySelector('.gallery-container').style.display = 'none'
