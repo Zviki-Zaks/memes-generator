@@ -64,10 +64,6 @@ function getMeme() {
     return gMeme
 }
 
-// function getCurrLineIdx(){
-//     return gMeme.selectedLineIdx
-// }
-
 function getImgsById(imgId) {
     const img = gImgs.find(img => img.id === imgId)
     return img
