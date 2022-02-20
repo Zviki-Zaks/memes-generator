@@ -8,6 +8,7 @@
 
 
 .header-layout {
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,13 +24,14 @@
 
 /* MAIN */
 .main-content {
+    min-height: 72vh;
     padding-left: 2em;
     padding-right: 2em;
 }
 
 .main-layout {
     display: grid;
-    grid-template-rows: 3rem 1fr 21em;
+    grid-template-rows: 6em 1fr 21em;
     gap: 20px;
 }
 
@@ -50,9 +52,8 @@
     grid-column: 3;
 
 }
-.main-layout .gallery-controller .more-keywords-btn {
+.main-layout .gallery-controller .random-btn {
     grid-column: 4;
-    align-self:flex-start;
     justify-self: start;
 }
 
@@ -94,13 +95,16 @@
 
 /* FOOTER */
 .main-footer {
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items:center;
+    text-align: center;
 }
+
+.main-footer .logo {
+    padding-top: 1rem;
+    margin: 1rem auto;
+}
+
 .main-footer p {
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
 }
 
 

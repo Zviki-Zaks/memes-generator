@@ -1,5 +1,6 @@
 
 .main-footer {
+    height: 15vh;
     background-color: var(--clr3-primaryClr);
-    padding: auto;
+    /* padding: auto; */
 }

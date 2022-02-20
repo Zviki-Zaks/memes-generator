@@ -1,7 +1,19 @@
 'use strict'
 
+const gMemesSentences = [
+    'I never eat falafel',
+    'DOMS DOMS EVERYWHERE',
+    'Stop Using i in for loops',
+    'Armed in knowledge',
+    'Js error "Unexpected String"',
+    'One does not simply write js',
+    'May the force be with you',
+    'I know JS',
+    'But if we could',
+    'JS what is this?',
+  ];
 var gImgs = [
-    { id: 1, keywords: ['all', 'polity', 'angry', 'trump'] },
+    { id: 1, keywords: ['all', 'politics', 'angry', 'trump'] },
     { id: 2, keywords: ['all', 'dogs', 'love', 'secret', 'animal'] },
     { id: 3, keywords: ['all', 'dogs', 'baby'] },
     { id: 4, keywords: ['all', 'animal', 'cat'] },
@@ -21,22 +33,18 @@ var gImgs = [
     { id: 18, keywords: ['all', 'funny',] },
 ]
 var gFilterBy = 'all'
-// var gMeme = {
-//     selectedImgId: null,
-//     selectedLineIdx: 0,
-//     // lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', y: 100 }]
-//     lines: [{ txt: '', size: 50, align: 'C', color: '#ffffff', x: 250, y: 100 }]
-// }
+
 var gMeme;
 var gMemes = []
 
 
-function creatMeme(){
+function creatMeme(imgId){
     gMeme = {
-        selectedImgId: null,
+        selectedImgId: imgId,
         selectedLineIdx: 0,
-        lines: [{ txt: '', size: 30, align: 'C', color: '#ffffff', x: 250, y: 50 }]
+        lines: []
     }
+    creatLine()
 }
 
 function getKeywordsList() {
@@ -52,13 +60,13 @@ function getImgsToDisplay() {
     return imgs
 }
 
-function setMeme(imgId) {
-    gMeme.selectedImgId = imgId
-}
-
 function getMeme() {
     return gMeme
 }
+
+// function getCurrLineIdx(){
+//     return gMeme.selectedLineIdx
+// }
 
 function getImgsById(imgId) {
     const img = gImgs.find(img => img.id === imgId)
@@ -69,12 +77,13 @@ function setTxt(strTxt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = strTxt
 }
 
-function setClr(color) {
-    gMeme.lines[gMeme.selectedLineIdx].color = color
+function setClr(color, str) {
+    if (str==='fill') gMeme.lines[gMeme.selectedLineIdx].fillClr = color
+    else gMeme.lines[gMeme.selectedLineIdx].strokeClr = color
 }
 
 function setFontSize(strOperator) {
-    gMeme.lines[gMeme.selectedLineIdx].size += (strOperator === '+') ? (+10) : (-10)
+    gMeme.lines[gMeme.selectedLineIdx].size += (strOperator === '+') ? (+5) : (-5)
 }
 
 function setLinePos(strOperator) {
@@ -84,9 +93,9 @@ function setLinePos(strOperator) {
 }
 
 function creatLine() {
-    // var line = { txt: '', size: 50, align: 'C', color: '#ffffff', y: 100 }
-    var line = { txt: '', size: 30, align: 'C', color: '#ffffff', x: gCanvas.width / 2, y: 50 }
-    if (gMeme.lines.length === 1) {
+    var line = { txt: '', size: 30, align: 'C', fillClr: '#ffffff',strokeClr: '#000000' , x: gCanvas.width / 2, y: 50 }
+    if (!gMeme.lines||!gMeme.lines.length) line.y = 50
+    else if (gMeme.lines.length === 1) {
         line.y = gCanvas.height - 50
     } else if (gMeme.lines.length > 1) {
         line.y = gCanvas.height / 2
@@ -97,8 +106,10 @@ function creatLine() {
 
 function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    if (!gMeme.lines.length) creatLine()
-    else gMeme.selectedLineIdx = gMeme.lines.length - 1
+    if (!gMeme.lines.length) {
+        creatLine()
+        gMeme.selectedLineIdx = 0
+    }else gMeme.selectedLineIdx = gMeme.lines.length - 1
 }
 
 function replaceLine() {
@@ -112,7 +123,15 @@ function setFilterImgs(keyword) {
     gFilterBy = keyword
 }
 
-function saveMeme(){
-    gMemes.unshift(gMeme)
+function saveMeme(imgUrl){
+    gMemes.unshift(imgUrl)
     saveToStorage(gMemes)
+}
+
+function creatRandomMeme() {
+    creatMeme(getRandomIntInclusive(1, 18))
+    setTxt(gMemesSentences[getRandomIntInclusive(0, 9)])
+    setClr(getRandomColor(), 'fill')
+    setClr(getRandomColor(), 'stroke')
+    gMeme.lines[gMeme.selectedLineIdx].size = getRandomIntInclusive(30, 80)
 }

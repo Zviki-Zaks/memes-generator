@@ -1,11 +1,10 @@
 'use strict'
 
-var gCanvas
-var gCtx
+
+var gCanvas = document.getElementById('editor-canvas')
+var gCtx = gCanvas.getContext('2d')
 
 function initEditor() {
-    gCanvas = document.getElementById('editor-canvas')
-    gCtx = gCanvas.getContext('2d')
     resizeCanvas()
     renderMeme()
     window.addEventListener('resize', resizeCanvas)
@@ -23,9 +22,7 @@ function renderMeme() {
     drawImgFromLocal(meme)
     setTimeout(() => drawText(meme), 0)
     var elTxt = document.querySelector('[name=txt-line]')
-    var elClr = document.querySelector('[name=color]')
     elTxt.value = gMeme.lines[gMeme.selectedLineIdx].txt
-    elClr.value = gMeme.lines[gMeme.selectedLineIdx].color
 }
 
 function drawImgFromLocal(meme) {
@@ -37,15 +34,16 @@ function drawImgFromLocal(meme) {
 }
 
 function drawText(meme) {
-    meme.lines.forEach(line => {
-        var x = calcX(line)
-        var y = line.y
-        gCtx.lineWidth = 1
-        gCtx.strokeStyle = 'black'
-        gCtx.fillStyle = line.color
-        gCtx.font = `${line.size}px "Impact`
-        gCtx.fillText(line.txt, x, y)
-        gCtx.strokeText(line.txt, x, y)
+    meme.lines.forEach((line ,idx)=> {
+        gCtx.font = `${line.size}px "Impact"`
+        if (idx=== meme.selectedLineIdx){
+            calcX(line)
+        }
+        gCtx.lineWidth = 2
+        gCtx.strokeStyle = line.strokeClr
+        gCtx.fillStyle = line.fillClr
+        gCtx.fillText(line.txt, line.x,  line.y)
+        gCtx.strokeText(line.txt, line.x,  line.y)
     });
 }
 
@@ -56,10 +54,10 @@ function onTxt() {
     renderMeme()
 }
 
-function onColorChoice() {
-    var el = document.querySelector('[name=color]')
+function onColorChoice(str) {
+    var el = document.querySelector('[name=fill-color]')
     var color = el.value
-    setClr(color)
+    setClr(color, str)
     renderMeme()
 }
 
@@ -73,18 +71,23 @@ function onMoveLine(strOperator) {
     renderMeme()
 }
 
-function calcX(lineObj) {
-    var txtWidth = gCtx.measureText(lineObj.txt).width
-    lineObj.x = gCanvas.width/2
-    if (lineObj.align === 'C') {
-        var x = lineObj.x - txtWidth / 2
-    } else if (lineObj.align === 'L') {
-        x = 10
+function calcX(line) {
+    // console.log('line', line);
+    var txtWidth = gCtx.measureText(line.txt).width
+    // console.log('width', txtWidth);
+    var prevX = line.x
+    if (line.align === 'C') {
+       line.x = gCanvas.width/2 - txtWidth / 2
+    } else if (line.align === 'L') {
+        line.x = 10
     } else {
-        x = gCanvas.width - (txtWidth+10)
+        line.x = gCanvas.width - (txtWidth+10)
     }
-    if (x < 10 || (txtWidth+20)>=gCanvas.width) alert('The text is too long...')
-    return x
+    if (line.x < 10 || (txtWidth+20)>=gCanvas.width) {
+        line.x = prevX
+        alert('The text is too long...')
+    }
+    return line.x
 }
 
 function addLine(){
@@ -103,7 +106,8 @@ function onReplaceLine() {
 }
 
 function onSaveMeme() {
-    saveMeme()
+    const data = gCanvas.toDataURL()
+    saveMeme(data)
     document.body.classList.add('memes-open')
     initMemes()
 }

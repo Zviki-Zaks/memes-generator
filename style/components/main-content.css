@@ -1,5 +1,9 @@
 
 /* GALLERY-CONTROL */
+.gallery-controller {
+    padding-top: 1rem;
+}
+
 .gallery-controller #filter-imgs {
     border: 0;
     border-bottom: 2px solid var(--clr1-black);
@@ -19,6 +23,7 @@
     border-radius: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 0.7rem
 }
 
 .gallery-controller .keywords span {
@@ -26,15 +31,13 @@
     cursor: pointer;
 }
 
-.gallery-controller .more-keywords-btn {
+.gallery-controller .random-btn {
     padding: 0 0.5em;
     background-color: transparent;
     border: 0;
     font-size: 1em;
     font-family: main-font;
-}
-.gallery-controller .btn:hover {
-    background-color: whitesmoke;
+    background-color: var(--clr3-primaryClr);
 }
 
 /* IMAGES-GALLERY */
@@ -53,6 +56,7 @@
     border-radius: 50%;
     object-fit: cover;
     object-position:center;
+    margin-bottom: 1rem;
 }
 
 .about-container a img{

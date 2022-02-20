@@ -3,7 +3,6 @@
 }
 
 html {
-    width: 100vw;
     color: var(--clr1-black);
     background-color: var(--clr2-whiteClr);
     font-family: main-font, sans-serif;
@@ -45,5 +44,9 @@ p {
 button, .btn {
     font-family: main-font;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 1rem;
+    border: 0;
+    background-color: whitesmoke;
+    font-size: 1rem;
+    text-align: center;
 }

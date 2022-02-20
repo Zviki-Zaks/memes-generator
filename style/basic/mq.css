@@ -1,5 +1,5 @@
 
-@media (max-width:700px){
+@media (max-width:780px){
     .editor-container {
         flex-direction: column;
         align-items: center;
@@ -12,12 +12,12 @@
     }
 
     .editor-container .editor-control {
-        grid-template-rows: repeat(5, 1fr);
+        /* grid-template-rows: repeat(5, 1fr); */
         grid-template-areas: 
         "txt txt txt txt txt"
         "replace . add-txt . delete"
         "up down move-left move-center move-right"
-        "increase increase decrease decrease color-btn"
+        "increase decrease . color-stroke color-fill"
         ". . save download download ";
         grid-auto-columns: auto;
         gap: 5px;
@@ -75,6 +75,7 @@
     body.nav-open .main-nav ul{
         display: flex;
         flex-direction: column;
+        background-color: var(--clr3-primaryClr);
     }
     body.nav-open .main-nav a {
         display: block;
@@ -82,9 +83,8 @@
     }
     /* GALLERY-CONTROL */
      .main-layout .gallery-controller {
-        max-width: min-content;
         display: grid;
-        grid-template-columns: 70% 30%;
+        grid-template-columns:3fr 1fr;
         grid-template-rows: 1fr 1fr;
         grid-auto-rows: max-content;
         gap: 0.5em;
@@ -101,7 +101,7 @@
         grid-column: 1;
         grid-row: 2;
     }
-    .main-layout .gallery-controller .more-keywords-btn {
+    .main-layout .gallery-controller .random-btn {
         grid-column: 2;
         grid-row: 2;
     }

@@ -30,11 +30,8 @@ function renderImags() {
 }
 
 function selectImg(imgId) {
-    creatMeme()
-    setMeme(imgId)
+    creatMeme(imgId)
     document.body.classList.toggle('editor-open')
-    // document.querySelector('.gallery-container').style.display = 'none'
-    // document.querySelector('.editor-container').style.display = 'grid'
     var els = document.querySelectorAll('.main-nav-link')
     els.forEach(el => el.classList.remove('active'))
     initEditor()
@@ -47,8 +44,6 @@ function renderOptions() {
         strHTML += `<option value="${word}">${word}</option>`
     })
     document.querySelector('datalist').innerHTML = strHTML
-
-
 }
 
 function renderKeywords() {
@@ -68,10 +63,19 @@ function onSearch() {
 }
 
 function onKeyword(el) {
+    document.getElementById('filter-imgs').value = el.innerText
     setFilterImgs(el.innerText)
     renderImags()
 }
 
 function onNavToggle(){
     document.body.classList.toggle('nav-open')
+}
+
+function onRandomMeme() {
+    creatRandomMeme(getRandomIntInclusive(1, 18))
+    document.body.classList.toggle('editor-open')
+    var els = document.querySelectorAll('.main-nav-link')
+    els.forEach(el => el.classList.remove('active'))
+    initEditor()
 }

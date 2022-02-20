@@ -24,18 +24,19 @@
         </div>
     </header>
 
-    <main class="main-content ">
+    <main class="main-content">
         <div class="gallery-container main-layout" id="gallery">
             <section class="gallery-controller">
                 <input list="search-keyword" name="filter-imgs" id="filter-imgs" placeholder="Enter search keyword">
-                <label class="btn search-btn" for="filter-imgs" onclick="onSearch()"><img src="ICONS/search-icon.png"></label>
+                <label class="btn search-btn" for="filter-imgs" onclick="onSearch()"><img
+                        src="ICONS/search-icon.png"></label>
                 <datalist id="search-keyword">
                     <!-- <option value="funny"></option> -->
                 </datalist>
-                <section class="keywords" >
+                <section class="keywords">
                     <!-- <span class="keyword" onclick="onKeyword()">funny</span> -->
                 </section>
-                <button class="btn more-keywords-btn">more...</button>
+                <button class="btn random-btn" onclick="onRandomMeme()">I'm flexible</button>
             </section>
 
             <section class="imgs-gallery">
@@ -61,34 +62,59 @@
             </div>
             <section class="editor-control">
                 <input type="text" name="txt-line" placeholder="Enter text" onkeyup="onTxt()">
-                <button class="replace-btn btn" onclick="onReplaceLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+                <button class="replace-btn btn" onclick="onReplaceLine()">
+                    <img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png">
+                </button>
                 <button class="move-up-btn btn" onclick="onMoveLine('+')">⬆</button>
                 <button class="move-down-btn btn" onclick="onMoveLine('-')">⬇</button>
-                <button class="move-left-btn btn" onclick="onMoveLine('L')"><img src="ICONS/align-to-left.png"></button>
-                <button class="move-center-btn btn" onclick="onMoveLine('C')"><img src="ICONS/center-text-alignment.png"></button>
-                <button class="move-right-btn btn" onclick="onMoveLine('R')"><img src="ICONS/align-to-right.png"></button>
-                <button class="add-txt-line-btn btn" onclick="addLine()"><img src="ICONS/add.png"></button>
-                <button class="delete-line-btn btn" onclick="onDeleteLine()"><img src="ICONS/trash.png"></button>
-                <button class="increase-font-btn btn" onclick="onFontSize('+')"><img src="ICONS/increase font - icon.png"></button>
-                <button class="decrease-font-btn btn" onclick="onFontSize('-')"><img src="ICONS/decrease font - icon.png"></button>
-                <input type="color" class="color-btn btn" name="color" onchange="onColorChoice()">
+                <button class="move-left-btn btn" onclick="onMoveLine('L')">
+                    <img src="ICONS/align-to-left.png">
+                </button>
+                <button class="move-center-btn btn" onclick="onMoveLine('C')">
+                    <img src="ICONS/center-text-alignment.png">
+                </button>
+                <button class="move-right-btn btn" onclick="onMoveLine('R')">
+                    <img src="ICONS/align-to-right.png">
+                </button>
+                <button class="add-txt-line-btn btn" onclick="addLine()">
+                    <img src="ICONS/add.png">
+                </button>
+                <button class="delete-line-btn btn" onclick="onDeleteLine()">
+                    <img src="ICONS/trash.png">
+                </button>
+                <button class="increase-font-btn btn" onclick="onFontSize('+')">
+                    <img src="ICONS/increase font - icon.png">
+                </button>
+                <button class="decrease-font-btn btn" onclick="onFontSize('-')">
+                    <img src="ICONS/decrease font - icon.png">
+                </button>
+                <input type="color" name="fill-color" id="fill-color" class="btn" onchange="onColorChoice('fill')">
+                <label for="fill-color" class="color-fill-btn btn">
+                    <img src="ICONS/paint-board-and-brush.png">
+                </label>
+                <input type="color" name="stroke-color" id="stroke-color" class="btn" onchange="onColorChoice('stroke')">
+                <label for="stroke-color" class="color-stroke-btn btn">
+                    <img src="ICONS/text stroke.png">
+                </label>
                 <button class="save-btn btn" onclick="onSaveMeme()">Save</button>
                 <a class="download-btn btn" href="#" onclick="downloadCanvas(this)">Download</a>
             </section>
         </div>
         <div class="memes-container" id="memes">
             <!-- <h1 class="no-memes">Create Your Memes</h1> -->
-            <!-- <div class="memes-canvas-container">
-                <canvas id="memes-canvas" width="200" height="200"></canvas>
+            <!-- <div class="meme-card" onclick="onMeme()">
+                <img src="">
             </div> -->
         </div>
+
     </main>
 
     <footer class="main-footer ">
         <div class="logo"><img class="logo-img" src="images/LOGO.png"></div>
-        <p class="p-footer">Feb' 2022</p>
+        <p class="p-footer">Feb 2022</p>
     </footer>
 
+    <script src="js/utils-service.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/memes-service.js"></script>
     <script src="js/main-controller.js"></script>
