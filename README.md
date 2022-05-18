@@ -1,3 +1,3 @@
 # memes-generator
 
-**vanilla js**, **canvas**
+**vanilla js** | **canvas**
